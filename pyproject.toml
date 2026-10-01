@@ -1,0 +1,14 @@
+[project]
+name = "n-log-sequence-sentinel"
+version = "0.1.0"
+description = "Emits a summary record after the Nth occurrence of a given message, suppressing further identical messages until a quiet timeout passes."
+requires-python = ">=3.10"
+dependencies = []
+readme = "README.md"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
