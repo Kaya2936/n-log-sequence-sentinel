@@ -16,3 +16,10 @@ for _ in range(3):
 The library exists to turn a flood of identical log lines into a single summary at a chosen threshold. The trade-off is suppression keyed per message: after the Nth occurrence, further identical messages are dropped until quiet_timeout units of clock time elapse without any occurrence of that message. A global quiet window would interleave badly with unrelated messages; per-message is simpler and predictable.
 
 Edge to be aware of: occurrences during the quiet window do not extend the window. The window is measured from the emitted record, not the most recent suppressed occurrence. The quiet boundary is inclusive: an occurrence exactly quiet_timeout units after emission resets the counter. Messages must be hashable; unhashable values raise TypeError immediately.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
