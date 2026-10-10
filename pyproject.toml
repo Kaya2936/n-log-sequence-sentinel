@@ -1,6 +1,6 @@
 [project]
 name = "n-log-sequence-sentinel"
-version = "0.1.0"
+version = "0.1.1"
 description = "Emits a summary record after the Nth occurrence of a given message, suppressing further identical messages until a quiet timeout passes."
 requires-python = ">=3.10"
 dependencies = []
